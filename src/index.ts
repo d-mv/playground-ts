@@ -1,10 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * DON'T REMOVE - required for ts-node-dev not to quit
  *  */
 import { keeper } from './keeper'
-import { filter, map, keys, forEach, pipe, is } from 'ramda'
-import faker from 'faker'
+
+const { log } = console
 
 keeper()
+/** links */
+// ramda - https://ramdajs.com/docs/
+
+
 // right your code below
 
+const data = ''
+
+log(data)
