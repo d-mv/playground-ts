@@ -9,10 +9,6 @@ const { log } = console
 keeper()
 /** links */
 // ramda - https://ramdajs.com/docs/
-
+// closure compiler - https://closure-compiler.appspot.com/home
 
 // right your code below
-
-const data = ''
-
-log(data)

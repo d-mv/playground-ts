@@ -4,7 +4,7 @@ export function makeArrayOf<T>(fn: () => T, maxQty?: number): T[] {
   let contacts = []
   let max = Math.ceil(Math.random() * 10)
 
-  if (maxQty && max>maxQty) max = maxQty
+  if (maxQty && max > maxQty) max = maxQty
 
   for (let i = 0; i < max; i++) {
     contacts.push(fn())
@@ -54,4 +54,53 @@ export function makeCompany(): Company {
     phone: makePhoneNumber(),
     address: makeAddress(),
   }
+}
+
+const fn = (...c: any) => {
+  // throw new Error()
+  return c[0].toString()
+}
+
+async function tryCatch<T, C>(fn: (...c: unknown[]) => Promise<T>, args: unknown[], def: C): Promise<T | C> {
+  try {
+    return (await fn(...args)) as T
+  } catch (err) {
+    return def
+  }
+}
+
+// console.log(tryCatch<unknown, []>(fn, [100, 100, 100], []))
+
+function match<T, C>(fn: (...c: unknown[]) => T, args: unknown[], def: C): T | C {
+  try {
+    const response = fn(...args)
+    console.log(typeof response)
+    if (typeof response === T) return response
+    return def
+  } catch (err) {
+    return def
+  }
+}
+
+ export function makeStringFromTemplate(template: string, params: string[]): string {
+   let result = template
+
+   if (params) {
+     params.forEach((param, key) => {
+       result = result.replace(new RegExp(`%${key + 1}`, 'g'), param)
+     })
+   }
+
+   return result
+ }
+
+export function capitalize(word: string): string {
+  if (typeof word !== 'string') return ''
+
+  return word.charAt(0).toUpperCase() + word.slice(1)
+
+}
+
+export function Type<T>(data: unknown): T {
+  return data as T
 }
