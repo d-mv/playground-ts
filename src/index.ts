@@ -12,3 +12,4 @@ keeper()
 // closure compiler - https://closure-compiler.appspot.com/home
 
 // right your code below
+log('hello')
