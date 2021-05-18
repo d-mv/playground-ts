@@ -1,3 +1,5 @@
 export function keeper() {
-  setInterval(() => {}, 10000)
+  setInterval(() => {
+    return
+  }, 10000)
 }
